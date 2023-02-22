@@ -1,0 +1,47 @@
+header{
+    background-color: var(--tertiary-color);
+    color: var(--secondary-color);
+}
+
+header > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8vh;
+    border-bottom: 1px solid var(--quaternary-color);
+}
+
+#list{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    padding: 0;
+    border: 0;
+    right: 4px;
+}
+
+#list > a{
+    background-color: var(--tertiary-color);
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid var(--secondary-color);
+    padding: 4px;
+    width: 100%;
+}
+
+#account_icon{
+    font-size: 1.6rem;
+}
+
+#list_button{
+    margin: 0;
+    background-color: var(--secondary-color);
+    border: 0;
+    border-radius: 50%;
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
+#list_button:hover{
+    background-color: var(--quinary-color);
+}

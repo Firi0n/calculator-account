@@ -1,0 +1,7 @@
+footer{
+    background-color: var(--tertiary-color);
+    color: var(--secondary-color);
+    padding: 0.6vh;
+    display: flex;
+    justify-content: space-between;
+}

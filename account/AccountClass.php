@@ -72,7 +72,7 @@ class Account
         return $exist;
     }
     // Logout function
-    public function logout()
+    public static function logout()
     {
         // Destroy session
         session_destroy();
