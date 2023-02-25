@@ -1,0 +1,29 @@
+input {
+    width: 37vw;
+}
+
+div>input {
+    width: 18vw;
+}
+
+@media (max-width: 1024px) {
+    form>div {
+        display: flex;
+        flex-direction: column;
+    }
+    form>div>input {
+        width: 25vw;
+    }
+}
+
+@media (max-width: 800px) {
+    form>div>input {
+        width: 32vw;
+    }
+}
+
+@media (max-width: 500px) {
+    form>div>input {
+        width: 40vw;
+    }
+}

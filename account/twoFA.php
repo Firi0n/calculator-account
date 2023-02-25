@@ -5,11 +5,13 @@ $template = new Template([
     // The path to the home page;
     "home" => "../",
     // The title of the page;
-    "title" => "Two factor authentication",
+    "title" => "2FA",
     // The description of the page;
     "description" => "Two factor authentication page for scientific calculator"
 ]);
 ?>
+
+<link rel="stylesheet" href="twoFA.css">
 
 <form action="login.php" method="post">
     <input type="text" name="twoFA" placeholder="Insert Code" required minlength="6" maxlength="6">
@@ -18,15 +20,6 @@ $template = new Template([
         <input type="submit" value="Continue">
     </div>
 </form>
-
-<style>
-    input{
-        width: 37vw;
-    }
-    div > input {
-        width: 18vw;
-    }
-</style>
 
 <?php
 // The content is printed;

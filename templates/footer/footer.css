@@ -9,3 +9,10 @@ footer{
 footer > label{
     font-size: 0.8rem;
 }
+
+@media (max-width: 800px) {
+    footer{
+        flex-direction: column;
+        text-align: center;
+    }
+}

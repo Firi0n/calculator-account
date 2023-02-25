@@ -53,6 +53,13 @@ textarea {
     letter-spacing: 0.1rem;
 }
 
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border: 1px solid var(--quaternary-color);
+}
+
 ::-webkit-input-placeholder {
     /* WebKit for chromium based browsers */
     color: var(--quinary-color);
@@ -70,6 +77,11 @@ textarea {
     height: 30vh;
 }
 
+i {
+    font-size: 1.6rem;
+    color: var(--secondary-color);
+}
+
 h1 {
     color: var(--secondary-color);
     font-size: 1.8rem;
@@ -85,4 +97,43 @@ a {
 
 a:hover {
     color: var(--quinary-color);
+}
+
+.error {
+    color: red;
+}
+
+/* media queries */
+@media (max-width: 1024px) {
+    html {
+        font-size: 2vw;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+        width: 40vw;
+    }
+}
+
+@media (max-width: 800px) {
+    html {
+        font-size: 2.5vw;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+        width: 60vw;
+    }
+}
+
+@media (max-width: 500px) {
+    html {
+        font-size: 3vw;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+        width: 80vw;
+    }
 }
