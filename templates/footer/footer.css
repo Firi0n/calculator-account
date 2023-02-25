@@ -5,3 +5,7 @@ footer{
     display: flex;
     justify-content: space-between;
 }
+
+footer > label{
+    font-size: 0.8rem;
+}
