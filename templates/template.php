@@ -9,20 +9,20 @@
     <meta name="author" content="Pasquale Rossini">
     <title>Calculator</title>
     <link rel="stylesheet" href="<?= $home ?>templates/template.css?<?= time() ?>">
-    <link rel="stylesheet" href="<?= $home ?>templates/header.css?<?= time() ?>">
-    <link rel="stylesheet" href="<?= $home ?>templates/footer.css?<?= time() ?>">
+    <link rel="stylesheet" href="<?= $home ?>templates/header/header.css?<?= time() ?>">
+    <link rel="stylesheet" href="<?= $home ?>templates/footer/footer.css?<?= time() ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css?<?= time() ?>">
 </head>
 
 <body>
     <header>
-        <?php require($home."templates/header.php"); ?>
+        <?php require($home."templates/header/header.php"); ?>
     </header>
     <main>
         <?= $content ?>
     </main>
     <footer>
-        <?php require($home."templates/footer.php"); ?>
+        <?php require($home."templates/footer/footer.php"); ?>
     </footer>
 </body>
 

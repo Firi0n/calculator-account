@@ -6,7 +6,6 @@
 </div>
 <div id="list">
     <?php
-    session_start();
     if (isset($_SESSION["id"])) {
         echo "<a href='" . $home . "account/profile.php'>Profile</a>
                     <a href='" . $home . "account/logout.php'>Logout</a>";
