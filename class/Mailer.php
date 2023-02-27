@@ -1,7 +1,7 @@
 <?php
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
-
+    require $home."class/IMail.php";
     class Mailer implements IMail
     {
         // home path
@@ -16,7 +16,7 @@
         public function send($contact, $header, $message) : bool
         {
             // Import PHPMailer
-            require_once $this->home."class/IMail.php";
+            require $this->home."class/credentials.php";
             require_once $this->home.'PHPMailer/src/Exception.php';
             require_once $this->home.'PHPMailer/src/PHPMailer.php';
             require_once $this->home.'PHPMailer/src/SMTP.php';
@@ -29,8 +29,8 @@
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'rossini.pasquale@itiscassino.edu.it';
-                $mail->Password = 'akaiiilzcieupucu';
+                $mail->Username = $username;
+                $mail->Password = $password;
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
                 $mail->setFrom('rossini.pasquale@itiscassino.edu.it', 'Mailer');

@@ -16,21 +16,21 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
     require_once("../class/Mailer.php");
     $account = new Account($home, new Mailer($home));
     // The user is logged in;
-    $return = $account->login($_POST["username"], $_POST["password"]);
+    $result = $account->login($_POST["username"], $_POST["password"]);
     // If the user is logged in, the user is redirected to the home page;
-    if($return["username"] && $return["password"]) {
-        header("Location: ".$home);
+    if($result == 0) {
+        header(($account->getData()["twoFA"] ? "Location: twoFA.php" : "Location: ".$home));
     }
 }
 ?>
 
 <form action="login.php" method="post">
     <input type="text" name="username" placeholder="Username" required minlength="4">
+    <?= (isset($result) && $result == 2) ? "<label class='error'>Username doesn't exists</label>" : "" ?>
     <!-- If the user does not exist, the error message is displayed; -->
-    <?= isset($return) && !$return["username"] ? "<label class='error'>Username does not exist</label>" : "" ?>
     <input type="password" name="password" placeholder="Password" required minlength="6">
     <!-- If the password is incorrect, the error message is displayed; -->
-    <?= isset($return) && !$return["password"] ? "<label class='error'>Password is incorrect</label>" : "" ?>
+    <?= (isset($result) && $result == 1) ? "<label class='error'>Wrong password or too many login attempts</label>" : "" ?>
     <input type="submit" value="Login">
 </form>
 
