@@ -1,10 +1,7 @@
 <?php
 // Importing and setting up the template;
 require("../templates/TemplateClass.php");
-$home = "../";
 $template = new Template([
-    // The path to the home page;
-    "home" => $home,
     // The title of the page;
     "title" => "Registration",
     // The description of the page;
@@ -14,7 +11,7 @@ if(isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password
     // Create account class;
     require("../class/AccountClass.php");
     require_once("../class/Mailer.php");
-    $account = new Account($home, new Mailer($home));
+    $account = new Account(new Mailer($home));
     // The user is logged in;
     $result = $account->register($_POST["username"], $_POST["email"], $_POST["password"]);
     // If the user is logged in, the user is redirected to the home page;
@@ -32,6 +29,7 @@ if(isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password
     <?= isset($result) && $result == 2 ? "<label class='error'>Email already in use</label>" : "" ?>
     <input id="password" type="password" name="password" placeholder="Password" required minlength="6">
     <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Confirm password" required minlength="6">
+    <!-- If the passwords dom't match, the error message is displayed; -->
     <label class="error" id="error" style="display : none">Passwords don't match</label>
     <input type="submit" value="Register">
 </form>

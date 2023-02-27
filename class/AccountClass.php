@@ -11,10 +11,10 @@ class Account
     private IMail $message;
     private $db;
     // Constructor
-    public function __construct($home, IMail $message)
+    public function __construct(IMail $message)
     {
         // Set Mailer type
-        require_once $home . "class/IMail.php";
+        require_once __DIR__ . "IMail.php";
 
         // Set message
         $this->message = $message;
@@ -33,7 +33,7 @@ class Account
 
         //Create tables if they don't exist
 
-        $query = file_get_contents($home . "sql/table_creation.sql");
+        $query = file_get_contents(__DIR__ . "../sql/table_creation.sql");
 
         if (!$db->query($query)) {
             throw new Exception("Error creating tables!");

@@ -16,7 +16,7 @@
             // extract the variables to a local namespace
             extract($this->vars);
             // include the template file
-            require($home."templates/template.php");
+            require(__DIR__."/template.php");
         }
 
     }

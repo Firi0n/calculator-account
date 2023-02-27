@@ -1,11 +1,7 @@
 <?php
-session_start();
-$home = "../";
 // Importing and setting up the template;
 require("../templates/TemplateClass.php");
 $template = new Template([
-    // The path to the home page;
-    "home" => $home,
     // The title of the page;
     "title" => "2FA",
     // The description of the page;
@@ -14,9 +10,6 @@ $template = new Template([
 
 require_once("../class/AccountClass.php");
 require_once("../class/Mailer.php");
-$session_save = $_SESSION;
-session_destroy();
-session_start();
 if(isset($_POST["twoFA"]) && $_POST["twoFA"] == $session_save["twoFA"]){
     $_SESSION = $session_save;
     header("Location: ../");

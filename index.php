@@ -1,10 +1,7 @@
 <?php
-session_start();
 // Importing and setting up the template;
 require("templates/TemplateClass.php");
 $template = new Template([
-    // The path to the home page;
-    "home" => "./",
     // The title of the page;
     "title" => "Home",
     // The description of the page;
