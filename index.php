@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Importing and setting up the template;
 require("templates/TemplateClass.php");
 $template = new Template([

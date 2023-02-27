@@ -63,6 +63,9 @@ class Account
                     $this->email = $result["email"];
                     $this->password = $password;
                     $this->twoFA = $result["twoFA"];
+                    session_start();
+                    $_SESSION["id"] = session_id();
+                    $_SESSION["account"] = serialize($this);
                     return 0;
                 }
             } else {
@@ -109,6 +112,7 @@ class Account
     public static function logout()
     {
         // Destroy session
+        session_start();
         session_destroy();
     }
     // Change data function
