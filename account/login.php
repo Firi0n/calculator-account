@@ -14,10 +14,6 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
     $account = new Account(new Mailer());
     // The user is logged in;
     $result = $account->login($_POST["username"], $_POST["password"]);
-    // If the user is logged in, the user is redirected to the home page;
-    if($result == 0) {
-        header(($account->getData()["twoFA"] ? "Location: twoFA.php" : "Location: ../"));
-    }
 }
 ?>
 

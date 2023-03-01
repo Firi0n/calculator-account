@@ -7,15 +7,13 @@ $template = new Template([
     // The description of the page;
     "description" => "Registration page for scientific calculator"
 ]);
-if(isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirmPassword"])) {
+if(isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password"])) {
     // Create account class;
     require("../class/AccountClass.php");
     require_once("../class/Mailer.php");
     $account = new Account(new Mailer());
     // The user is logged in;
     $result = $account->register($_POST["username"], $_POST["email"], $_POST["password"]);
-    // If the user is logged in, the user is redirected to the home page;
-    ($result == 0) ? header("Location: twoFA.php") : "";
 }
 ?>
 

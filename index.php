@@ -1,5 +1,6 @@
 <?php
 // Importing and setting up the template;
+session_start();
 require("templates/TemplateClass.php");
 $template = new Template([
     // The title of the page;

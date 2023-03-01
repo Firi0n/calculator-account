@@ -3,7 +3,7 @@
 class Account
 {
     // Variables
-    private string $user_id;
+    private int $user_id;
     private string $username;
     private string $email;
     private string $password;
@@ -42,9 +42,9 @@ class Account
         $this->db = $db;
     }
     // Login function
-    public function login(string $username, string $password): int
+    public function login(string $username, string $password, bool $allTwoFA = false): int
     {
-        $query = "SELECT `email`, `twoFA`, `attempts`, `last_attempt` FROM `users` WHERE(`username` = '$username')";
+        $query = "SELECT `user_id`, `email`, `twoFA`, `attempts`, `last_attempt` FROM `users` WHERE(`username` = '$username')";
 
         if ($this->existData("`username`", "users", "`username`='$username'")) {
 
@@ -59,13 +59,19 @@ class Account
             )) {
                 if ($result == TRUE) {
                     $this->db->query("UPDATE `users` SET `attempts` = 3, `last_attempt` = CURRENT_TIMESTAMP WHERE (`username` = '$username')");
+                    $this->user_id = $result["user_id"];
                     $this->username = $username;
                     $this->email = $result["email"];
                     $this->password = $password;
                     $this->twoFA = $result["twoFA"];
                     session_start();
-                    $_SESSION["id"] = session_id();
                     $_SESSION["account"] = serialize($this);
+                    if($this->twoFA || $allTwoFA){
+                        header("Location: twoFA.php");
+                    }else{
+                        $_SESSION["id"] = session_id();
+                        header("Location: ../");
+                    }
                     return 0;
                 }
             } else {
@@ -87,7 +93,7 @@ class Account
         } else if ($this->existData("`email`", "users", "`email`='$email'")) {
             return 2;
         } else if ($this->db->query($query) === TRUE) {
-            $this->login($username, $password);
+            $this->login($username, $password, true);
             return 0;
         }
         return 3;
@@ -114,22 +120,48 @@ class Account
         // Destroy session
         session_start();
         session_destroy();
+        header("Location: ../");
     }
     // Change data function
-    public function changeData(string $username, string $email, string $password, string $twoFA): bool
+    public function changeData(string $username, string $email, string $password, string $twoFA): int
     {
-        return true;
+        $this->db = mysqli_connect("localhost", "root", database: "account");
+        $data = [
+            "username" => $username,
+            "email" => $email,
+            "password" => $password,
+            "twoFA" => $twoFA
+        ];
+        $i = 0;
+        foreach($data as $key => $value){
+            $i++;
+            $query = "UPDATE `users` SET `$key` = '$value' WHERE (`user_id` = '$this->user_id' AND NOT `$key` = '$value');";
+            if($this->db->query($query) === FALSE){
+                return $i;
+            }
+        }
+        $this->login($username, $password, true);
+        return 0;
     }
     // Delete account function
     public function deleteAccount(): bool
     {
-        return true;
+        $this->db = mysqli_connect("localhost", "root", database: "account");
+        $query = "DELETE FROM `users` WHERE (`user_id` = '" . $this->user_id . "');";
+        $result = $this->db->query($query);
+        if ($result === TRUE) {
+            Account::logout();
+            return true;
+        }else{
+            return false;
+        }
     }
     // Get data function
     public function getData(): array
     {
         // Return array with data
         return [
+            "user_id" => $this->user_id,
             "username" => $this->username,
             "email" => $this->email,
             "password" => $this->password,
@@ -137,3 +169,4 @@ class Account
         ];
     }
 }
+?>
