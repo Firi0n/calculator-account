@@ -14,7 +14,7 @@ class Account
     public function __construct(IMail $message)
     {
         // Set Mailer type
-        require_once __DIR__ . "IMail.php";
+        require_once __DIR__ . "/IMail.php";
 
         // Set message
         $this->message = $message;
@@ -33,7 +33,7 @@ class Account
 
         //Create tables if they don't exist
 
-        $query = file_get_contents(__DIR__ . "../sql/table_creation.sql");
+        $query = file_get_contents(__DIR__ . "/../sql/table_creation.sql");
 
         if (!$db->query($query)) {
             throw new Exception("Error creating tables!");

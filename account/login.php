@@ -11,7 +11,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
     // Create account class;
     require_once("../class/AccountClass.php");
     require_once("../class/Mailer.php");
-    $account = new Account(new Mailer($home));
+    $account = new Account(new Mailer());
     // The user is logged in;
     $result = $account->login($_POST["username"], $_POST["password"]);
     // If the user is logged in, the user is redirected to the home page;

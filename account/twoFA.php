@@ -10,12 +10,10 @@ $template = new Template([
 
 require_once("../class/AccountClass.php");
 require_once("../class/Mailer.php");
-if(isset($_POST["twoFA"]) && $_POST["twoFA"] == $session_save["twoFA"]){
-    $_SESSION = $session_save;
+if(isset($_POST["twoFA"]) && $_POST["twoFA"] == $_SESSION["twoFA"]){
     header("Location: ../");
 }else{
-    $_SESSION = $session_save;
-    $_SESSION["twoFA"] = unserialize($session_save["account"])->sendTwoFACode();
+    $_SESSION["twoFA"] = unserialize($_SESSION["account"])->sendTwoFACode();
 }
 
 ?>
