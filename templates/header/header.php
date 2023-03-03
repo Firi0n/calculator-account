@@ -1,5 +1,5 @@
 <div>
-    <h1><a href="<?= $path ?>">Calculator</a> | <?= $title ?></h1>
+    <h1><a href="<?= $path ?>">Calculator</a> / <?= $title ?></h1>
     <button id="list_button" onclick="show()">
         <i id="account_icon" class="fa fa-light fa-user"></i>
     </button>

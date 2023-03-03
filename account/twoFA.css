@@ -2,6 +2,10 @@ input {
     width: 37vw;
 }
 
+div{
+    width: 35vw;
+}
+
 div>input {
     width: 18vw;
 }
