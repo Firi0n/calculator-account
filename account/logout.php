@@ -1,6 +1,6 @@
 <?php 
 
-require_once "../class/AccountClass.php";
+require_once "../class/Account.php";
 
 Account::logout();
 

@@ -12,6 +12,37 @@ Go to `template.php` file in `templates` folder and modify `path` variable to th
 
 ---
 
+## Add your page
+
+For add your page create new page with extension `PHP` and modify this base page:
+
+```PHP
+<?php
+// Importing and setting up the template;
+session_start();
+require("templates/TemplateClass.php");
+$template = new Template([
+    // The title of the page;
+    "title" => "Your title",
+    // The description of the page;
+    "description" => "Your description"
+]);
+?>
+
+Your code
+
+<?php
+// The content is printed;
+$template->print();
+?>
+```
+
+---
+
+## Modify template
+
+To edit the template, edit the Folder `templates` pages.
+
 ## IMail interface
 
 The `IMail` interface allows you to use a library other than `PHPMailer` as long as you create a specific method called `send` which takes the parameters `contact`, `header` and `message` as strings and return a `bool` variable type. If you are using a library other than `PHPMailer` you can skip the steps below.

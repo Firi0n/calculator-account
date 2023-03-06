@@ -1,7 +1,6 @@
 <?php
 session_start();
-    require("../class/AccountClass.php");
-    require_once("../class/Mailer.php");
+    require("../class/Account.php");
     $account = unserialize($_SESSION["account"]);
     $account->deleteAccount();
 ?>

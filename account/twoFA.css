@@ -1,9 +1,11 @@
-input {
-    width: 37vw;
+input[type="text"]{
+    width: 30vw;
 }
 
-div{
-    width: 35vw;
+form>div {
+    width: 32.5vw;
+    display: flex;
+    justify-content: space-between;
 }
 
 div>input {
@@ -14,20 +16,21 @@ div>input {
     form>div {
         display: flex;
         flex-direction: column;
+        width: auto;
     }
-    form>div>input {
-        width: 25vw;
+    form>input[type="text"] {
+        width: 40vw;
     }
 }
 
 @media (max-width: 800px) {
-    form>div>input {
-        width: 32vw;
+    form>input[type="text"] {
+        width: 50vw;
     }
 }
 
 @media (max-width: 500px) {
-    form>div>input {
-        width: 40vw;
+    form>input[type="text"] {
+        width: 60vw;
     }
 }

@@ -8,9 +8,10 @@ $template = new Template([
     // The description of the page;
     "description" => "Profile page for scientific calculator"
 ]);
-require("../class/AccountClass.php");
+require("../class/Account.php");
 require_once("../class/Mailer.php");
 $account = unserialize($_SESSION["account"]);
+// If form is submitted, the data is changed;
 if(isset($_POST["username"]) && isset($_POST["email"])) {
     // The user is logged in;
     $result = $account->changeData($_POST["username"], $_POST["email"], ($_POST["password"] != "" ? $_POST["password"] : $account->getData()["password"]), isset($_POST["twoFA"]));
@@ -40,14 +41,14 @@ if(isset($_POST["username"]) && isset($_POST["email"])) {
 </form>
 
 <script>
-    //Selecting elements.
+    //Selecting elements;
     let password = document.getElementById("password");
     let confirmPassword = document.getElementById("confirmPassword");
     let form = document.getElementById("profile");
     let error = document.getElementById("error");
-    //Adding event listener.
+    //Adding event listener;
     form.addEventListener("submit", function(event) {
-        //If passwords do not match, the event is prevented and the alert is displayed.
+        //If passwords do not match, the event is prevented and the alert is displayed;
         if(password.value !== confirmPassword.value) {
             event.preventDefault();
             error.style.display = "block";

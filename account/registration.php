@@ -9,11 +9,10 @@ $template = new Template([
 ]);
 if(isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password"])) {
     // Create account class;
-    require("../class/AccountClass.php");
-    require_once("../class/Mailer.php");
-    $account = new Account(new Mailer());
+    require("../class/Account.php");
+    $account = new Account();
     // The user is logged in;
-    $result = $account->register($_POST["username"], $_POST["email"], $_POST["password"]);
+    $result = $account->registration($_POST["username"], $_POST["email"], $_POST["password"]);
 }
 ?>
 
@@ -33,14 +32,14 @@ if(isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password
 </form>
 
 <script>
-    //Selecting elements.
+    //Selecting elements;
     let password = document.getElementById("password");
     let confirmPassword = document.getElementById("confirmPassword");
     let form = document.getElementById("registration");
     let error = document.getElementById("error");
-    //Adding event listener.
+    //Adding event listener;
     form.addEventListener("submit", function(event) {
-        //If passwords do not match, the event is prevented and the alert is displayed.
+        //If passwords do not match, the event is prevented and the alert is displayed;
         if(password.value !== confirmPassword.value) {
             event.preventDefault();
             error.style.display = "block";

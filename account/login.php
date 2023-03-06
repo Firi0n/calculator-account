@@ -9,9 +9,8 @@ $template = new Template([
 ]);
 if(isset($_POST["username"]) && isset($_POST["password"])) {
     // Create account class;
-    require_once("../class/AccountClass.php");
-    require_once("../class/Mailer.php");
-    $account = new Account(new Mailer());
+    require_once("../class/Account.php");
+    $account = new Account();
     // The user is logged in;
     $result = $account->login($_POST["username"], $_POST["password"]);
 }

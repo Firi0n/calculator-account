@@ -6,6 +6,7 @@
 </div>
 <div id="list">
     <?php
+    // If the user is logged in, the logout and profile links are displayed, otherwise the login and registration links are displayed;
     if (isset($_SESSION["id"])) {
         echo "<a href='" . $path . "account/profile.php'>Profile</a>
                     <a href='" . $path . "account/logout.php'>Logout</a>";
@@ -17,7 +18,7 @@
 </div>
 
 <script>
-    // Funzione per mostrare la lista dei link;
+    // The list is hidden;
     function show() {
         let show = document.getElementById("list").style.display
         if (show == "none") {
