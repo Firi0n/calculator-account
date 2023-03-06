@@ -1,6 +1,6 @@
 <?php
     interface IMail
     {
-        public function send($contact, $header, $message) : bool;
+        public function send(string $contact, string $header, string $message) : bool;
     }
 ?>

@@ -5,7 +5,7 @@
     class Mailer implements IMail
     {
         // Send email
-        public function send($contact, $header, $message) : bool
+        public function send(string $contact, string $header, string $message) : bool
         {
             // Import PHPMailer
             require __DIR__."/credentials.php";
