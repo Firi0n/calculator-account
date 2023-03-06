@@ -13,6 +13,14 @@ $password = '';
 
 In the username variable enter your google email and in the password variable enter the password obtained with [this](https://support.google.com/accounts/answer/185833 "Sign in with App Passwords") method.
 
+---
+
 ## Change project directory
 
 Go to `template.php` file in `templates` folder and modify `path` variable to the path to the actual project path.
+
+---
+
+## Change database settings
+
+The database is set up in the `account` class constructor, which is located in the `AccountClass.php` file in the `class` folder.
